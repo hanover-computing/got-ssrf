@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Protect Got requests from SSRF",
   "type": "module",
-  "module": "index.js",
+  "exports": "./index.js",
   "repository": "JaneJeon/got-csrf",
   "author": "Jane Jeon <me@janejeon.dev>",
   "license": "LGPL-2.1",
@@ -11,7 +11,7 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "dependencies": {
-    "got": "12.0.0-beta.4",
+    "got": "^11.8.2",
     "ipaddr.js": "^2.0.1"
   },
   "devDependencies": {
