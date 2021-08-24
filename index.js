@@ -1,21 +1,25 @@
-import { lookup } from 'dns/promises'
+import { lookup } from 'dns'
+import { promisify } from 'util'
 import got from 'got'
 import ip from 'ipaddr.js'
 
+// for whatever fucking reason, jest can't resolve imports from dns/promises (but not dns)
+const lookupAsync = promisify(lookup)
+
 const ALLOWED_PROTOCOLS = ['http:', 'https:']
 
-export const gotSSRF = got.extend({
+export class SsrfRequestBlockedError extends Error {}
+
+export const gotSsrf = got.extend({
   hooks: {
     beforeRequest: [
       // Assume all URLs are properly formed at this point
       async options => {
-        if (!(options.context || {}).ssrfProtection) return
-
         // To prevent Server Side Request Forgery, we need to check the protocol.
         // Otherwise, you could end up making requests to internal services (e.g. the database)
         // that are within the same network but is not intended to be reached by the user.
         if (!ALLOWED_PROTOCOLS.includes(options.url.protocol))
-          throw new Error('Invalid protocol!')
+          throw new SsrfRequestBlockedError('Invalid protocol!')
 
         // Unfortunately, we can't use the dnsLookup/dnsCache that the user passed into got's options,
         // as got does not expose the damn thing.
@@ -27,13 +31,13 @@ export const gotSSRF = got.extend({
         // DNS caching (natively): https://stackoverflow.com/questions/11020027/dns-caching-in-linux
 
         // Another layer of protection against SSRF - ensure we're not hitting internal services
-        const { address } = await lookup(options.url.hostname)
+        const { address } = await lookupAsync(options.url.hostname)
         // Try to match "reserved" IP ranges: https://en.wikipedia.org/wiki/Reserved_IP_addresses
         // https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html#case-2-application-can-send-requests-to-any-external-ip-address-or-domain-name
         // The function returns 'unicast' or the name of the reserved IP range, should it match any.
         // This in effect blocks all private IP Range: https://git.io/JWy3u, https://git.io/JWy3b
         if (ip.parse(address).range() !== 'unicast')
-          throw new Error('The IP of the domain is reserved!')
+          throw new SsrfRequestBlockedError('The IP of the domain is reserved!')
       }
     ]
   }
