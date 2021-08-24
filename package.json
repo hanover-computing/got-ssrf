@@ -1,0 +1,22 @@
+{
+  "name": "got-ssrf",
+  "version": "1.0.0",
+  "description": "Protect Got requests from SSRF",
+  "main": "index.js",
+  "dependencies": {
+    "got": "^11.8.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": "JaneJeon/got-csrf",
+  "keywords": [
+    "got",
+    "ssrf",
+    "csrf",
+    "security",
+    "plugin"
+  ],
+  "author": "Jane Jeon <me@janejeon.dev>",
+  "license": "LGPL-3.0"
+}
