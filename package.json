@@ -10,7 +10,8 @@
     "test": "echo 'pass'"
   },
   "dependencies": {
-    "got": "^11.8.2"
+    "got": "^11.8.2",
+    "ipaddr.js": "^2.0.1"
   },
   "devDependencies": {
     "@janejeon/eslint-config": "^2.0.2",
