@@ -3,20 +3,35 @@
   "version": "1.0.0",
   "description": "Protect Got requests from SSRF",
   "main": "index.js",
+  "repository": "JaneJeon/got-csrf",
+  "author": "Jane Jeon <me@janejeon.dev>",
+  "license": "LGPL-2.1",
+  "scripts": {
+    "test": "echo 'pass'"
+  },
   "dependencies": {
     "got": "^11.8.2"
   },
-  "scripts": {
-    "test": "jest"
+  "devDependencies": {
+    "@janejeon/eslint-config": "^2.0.2",
+    "@janejeon/prettier-config": "^1.0.4",
+    "eslint": "^7.32.0",
+    "husky": "^4.3.8",
+    "jest": "^27.0.6",
+    "jest-junit": "^12.2.0",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
+    "skip-ci": "^1.0.4"
   },
-  "repository": "JaneJeon/got-csrf",
+  "prettier": "@janejeon/prettier-config",
+  "eslintConfig": {
+    "extends": "@janejeon"
+  },
   "keywords": [
     "got",
     "ssrf",
     "csrf",
     "security",
     "plugin"
-  ],
-  "author": "Jane Jeon <me@janejeon.dev>",
-  "license": "LGPL-2.1"
+  ]
 }
