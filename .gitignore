@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+index.cjs.js
+index.esm.js

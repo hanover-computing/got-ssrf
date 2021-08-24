@@ -1,10 +1,10 @@
-const { lookup } = require('dns/promises')
-const got = require('got')
-const { parse } = require('ipaddr.js')
+import { lookup } from 'dns/promises'
+import got from 'got'
+import { parse } from 'ipaddr.js'
 
 const ALLOWED_PROTOCOLS = ['http:', 'https:']
 
-module.exports = got.extend({
+export default got.extend({
   hooks: {
     beforeRequest: [
       // Assume all URLs are properly formed at this point

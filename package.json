@@ -7,13 +7,16 @@
   "author": "Jane Jeon <me@janejeon.dev>",
   "license": "LGPL-2.1",
   "scripts": {
-    "test": "echo 'pass'"
+    "test": "jest"
   },
   "dependencies": {
     "got": "^11.8.2",
     "ipaddr.js": "^2.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "@janejeon/eslint-config": "^2.0.2",
     "@janejeon/prettier-config": "^1.0.4",
     "eslint": "^7.32.0",
