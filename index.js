@@ -1,10 +1,10 @@
 import { lookup } from 'dns/promises'
 import got from 'got'
-import { parse } from 'ipaddr.js'
+import ip from 'ipaddr.js'
 
 const ALLOWED_PROTOCOLS = ['http:', 'https:']
 
-export default got.extend({
+export const gotSSRF = got.extend({
   hooks: {
     beforeRequest: [
       // Assume all URLs are properly formed at this point
@@ -32,7 +32,7 @@ export default got.extend({
         // https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html#case-2-application-can-send-requests-to-any-external-ip-address-or-domain-name
         // The function returns 'unicast' or the name of the reserved IP range, should it match any.
         // This in effect blocks all private IP Range: https://git.io/JWy3u, https://git.io/JWy3b
-        if (parse(address).range() !== 'unicast')
+        if (ip.parse(address).range() !== 'unicast')
           throw new Error('The IP of the domain is reserved!')
       }
     ]
