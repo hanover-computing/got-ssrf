@@ -11,12 +11,13 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "dependencies": {
-    "got": "^11.8.2",
+    "got": "^12.0.0-beta.4",
     "ipaddr.js": "^2.0.1"
   },
   "devDependencies": {
     "@janejeon/eslint-config": "^2.0.2",
     "@janejeon/prettier-config": "^1.0.4",
+    "enhanced-resolve": "^5.8.2",
     "eslint": "^7.32.0",
     "husky": "^4.3.8",
     "jest": "^27.0.6",
@@ -30,7 +31,28 @@
     "extends": "@janejeon"
   },
   "keywords": [
+    "http",
+    "https",
+    "http2",
+    "get",
     "got",
+    "url",
+    "uri",
+    "request",
+    "simple",
+    "curl",
+    "wget",
+    "fetch",
+    "net",
+    "network",
+    "gzip",
+    "brotli",
+    "requests",
+    "human-friendly",
+    "axios",
+    "superagent",
+    "node-fetch",
+    "ky",
     "ssrf",
     "csrf",
     "security",
