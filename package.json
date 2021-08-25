@@ -8,7 +8,10 @@
   "author": "Jane Jeon <me@janejeon.dev>",
   "license": "LGPL-2.1",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "lint": "run-s lint:*",
+    "lint:prettier": "prettier --check .",
+    "lint:eslint": "eslint ."
   },
   "dependencies": {
     "got": "^12.0.0-beta.4",
