@@ -9,6 +9,7 @@ module.exports = function (request, options) {
   if (
     [
       'dns/promises',
+      'dns',
       'util',
       'url',
       'tls',
