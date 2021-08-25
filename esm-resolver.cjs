@@ -8,7 +8,7 @@ module.exports = function (request, options) {
   // list global module that must be resolved by defaultResolver here
   if (
     [
-      'dns',
+      'dns/promises',
       'util',
       'url',
       'tls',

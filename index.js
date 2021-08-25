@@ -1,6 +1,6 @@
 import got from 'got'
 import ip from 'ipaddr.js'
-import lookup from './lookup.js'
+import { lookup } from 'dns/promises'
 
 const ALLOWED_PROTOCOLS = ['http:', 'https:']
 
