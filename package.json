@@ -38,6 +38,10 @@
     "prettier": "^2.3.2",
     "skip-ci": "^1.0.4"
   },
+  "engines": {
+    "node": ">=15",
+    "npm": ">=7"
+  },
   "prettier": "@janejeon/prettier-config",
   "eslintConfig": {
     "extends": "@janejeon"

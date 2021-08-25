@@ -50,6 +50,5 @@ workflows:
           matrix:
             parameters:
               node-version:
-                - '14.16'
                 - '15.14'
                 - current
