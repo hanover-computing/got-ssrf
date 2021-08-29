@@ -4,9 +4,6 @@
   "description": "Protect Got requests from SSRF",
   "type": "module",
   "exports": "./index.js",
-  "files": [
-    "./index.js"
-  ],
   "repository": "JaneJeon/got-csrf",
   "author": "Jane Jeon <me@janejeon.dev>",
   "license": "LGPL-3.0",
