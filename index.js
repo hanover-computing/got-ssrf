@@ -1,6 +1,10 @@
 import got from 'got'
 import ip from 'ipaddr.js'
-import { lookup } from 'dns/promises'
+import { lookup as nativeLookup } from 'dns/promises'
+import debugGen from 'debug'
+import { promisify } from 'util'
+
+const debug = debugGen('got-ssrf')
 
 const ALLOWED_PROTOCOLS = ['http:', 'https:']
 
@@ -15,14 +19,17 @@ export const gotSsrf = got.extend({
         if (!ALLOWED_PROTOCOLS.includes(options.url.protocol))
           throw new Error('Invalid protocol!')
 
-        // Unfortunately, we can't use the dnsLookup/dnsCache that the user passed into got's options,
-        // as got does not expose the damn thing.
-        // As I really *really* don't want to recreate lookup/dnscache when the user might've already
-        // specified dnsLookup or dnsCache (or rely on the default),
-        // I am giving up and using the native dns lookup, instead of user-provided dnslookup/cache.
-        // This means no caching, no lookup logic, etc.
-        // Man, this really fucking sucks. However, there does seem to be a way to get around the issue of
-        // DNS caching (natively): https://stackoverflow.com/questions/11020027/dns-caching-in-linux
+        let lookup = nativeLookup
+
+        if (options.dnsCache) {
+          debug('Using user-provided dnsCache.lookupAsync')
+          lookup = options.dnsCache.lookupAsync
+        } else if (options.dnsLookup) {
+          debug('Promisifying user-provided dnsLookup')
+          lookup = promisify(options.dnsLookup)
+        } else {
+          debug('Falling back to native dns/promises lookup')
+        }
 
         // Another layer of protection against SSRF - ensure we're not hitting internal services
         const { address } = await lookup(options.url.hostname)
