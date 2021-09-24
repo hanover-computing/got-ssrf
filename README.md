@@ -22,7 +22,7 @@ npm i got-ssrf
 
 ## Usage
 
-Note that this package is ESM-only; see https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c for what to do if you're using CJS (i.e. `require()`). In addition, due to its usage of `dns/promises`, it only runs on node v15 or higher.
+Note that this package is ESM-only; see https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c for what to do if you're using CJS (i.e. `require()`).
 
 ```js
 import { gotSsrf } from 'got-ssrf'
