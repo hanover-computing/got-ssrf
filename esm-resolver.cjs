@@ -5,22 +5,18 @@ const resolver = require('enhanced-resolve').create.sync({
 })
 
 module.exports = function (request, options) {
+  // This is an EXTREMELY hacky workaround for jest not being able to load manual mocks for ES Modules.
+  // Man, fuck this shit.
+  if (request.includes('dns')) request = request.replace('dns', '__mocks__/dns')
+
   // list global module that must be resolved by defaultResolver here
   if (
-    [
-      'dns/promises',
-      'dns',
-      'util',
-      'url',
-      'tls',
-      'http',
-      'https',
-      'stream',
-      'events',
-      'net'
-    ].includes(request)
+    ['util', 'url', 'tls', 'http', 'https', 'stream', 'events', 'net'].includes(
+      request
+    )
   ) {
     return options.defaultResolver(request, options)
   }
+
   return resolver(options.basedir, request)
 }
