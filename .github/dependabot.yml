@@ -1,6 +1,6 @@
 version: 2
 updates:
-  - directory: /website
+  - directory: /
     package-ecosystem: npm
     schedule:
       interval: weekly
