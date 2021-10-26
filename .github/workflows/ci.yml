@@ -27,7 +27,8 @@ jobs:
         env:
           CACHE_KEY: npm-cache-key-node-v${{ matrix.node-version }}
       - run: npm i
-      - run: npm run lint
+      - name: Lint
+        run: npm run lint
   test:
     needs: lint
 
