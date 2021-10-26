@@ -61,4 +61,3 @@ jobs:
           report_paths: reports/jest-node*/*.xml
           require_tests: true
           fail_on_failure: true
-          check_name: Test Check for node v${{ matrix.node-version }}
