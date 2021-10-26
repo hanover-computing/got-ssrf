@@ -59,5 +59,3 @@ jobs:
         if: always() # always run even if the previous step fails
         with:
           report_paths: reports/jest-node*/*.xml
-          require_tests: true
-          fail_on_failure: true
