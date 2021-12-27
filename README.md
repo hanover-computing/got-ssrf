@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to got-ssrf 👋</h1>
 
 [![CircleCI](https://circleci.com/gh/JaneJeon/got-ssrf/tree/master.svg?style=shield)](https://circleci.com/gh/JaneJeon/got-ssrf/tree/master)
-[![codecov](https://codecov.io/gh/JaneJeon/got-ssrf/branch/master/graph/badge.svg?token=ZGSKCMMEYI)](https://codecov.io/gh/JaneJeon/got-ssrf)
+[![codecov](https://codecov.io/gh/JaneJeon/got-ssrf/branch/master/graph/badge.svg)](https://codecov.io/gh/JaneJeon/got-ssrf)
 [![Version](https://img.shields.io/npm/v/got-ssrf)](https://www.npmjs.com/package/got-ssrf)
 [![Downloads](https://img.shields.io/npm/dt/got-ssrf)](https://www.npmjs.com/package/got-ssrf)
 
