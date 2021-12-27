@@ -105,3 +105,5 @@ dist
 
 index.cjs.js
 index.esm.js
+
+reports/
