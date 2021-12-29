@@ -5,6 +5,8 @@ aliases:
     executor:
       name: node/default
       tag: << parameters.node-version >>
+    environment:
+      NPM_CONFIG_PREFER_OFFLINE: 'true'
   - &size
     resource_class: small
   - &params
