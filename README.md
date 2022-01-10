@@ -65,4 +65,4 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2021 [Jane Jeon <me@janejeon.dev>](https://github.com/JaneJeon).<br />
-This project is [LGPL-3.0](https://github.com/JaneJeon/got-csrf/blob/master/LICENSE) licensed.
+This project is [LGPL-3.0](https://github.com/JaneJeon/got-csrf/blob/master/LICENSE) licensed (TL;DR: please contribute back any improvements to this library).
