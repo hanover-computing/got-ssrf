@@ -5,13 +5,14 @@
   "type": "module",
   "exports": "./index.js",
   "repository": "JaneJeon/got-csrf",
-  "author": "Jane Jeon <me@janejeon.dev>",
+  "author": "Jane Jeon <me@janejeon.com>",
   "license": "LGPL-3.0",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "lint": "run-s lint:*",
     "lint:prettier": "prettier --check .",
-    "lint:eslint": "eslint ."
+    "lint:eslint": "eslint .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "debug": "^4.3.2",
@@ -22,7 +23,7 @@
     "@janejeon/eslint-config": "^2.2.0",
     "@janejeon/prettier-config": "^1.1.0",
     "enhanced-resolve": "^5.8.3",
-    "husky": "^4.3.8",
+    "husky": "^8.0.1",
     "jest": "^27.2.1",
     "jest-junit": "^14.0.0",
     "lint-staged": "13.0.3",
