@@ -107,3 +107,5 @@ index.cjs.js
 index.esm.js
 
 reports/
+
+.DS_Store
