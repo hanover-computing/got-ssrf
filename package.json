@@ -10,8 +10,8 @@
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "lint": "run-s lint:*",
-    "lint:prettier": "prettier --check .",
-    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier --check . --ignore-path .gitignore",
+    "lint:eslint": "eslint . --ignore-path .gitignore",
     "prepare": "husky install"
   },
   "dependencies": {
