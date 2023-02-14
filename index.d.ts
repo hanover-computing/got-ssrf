@@ -1,3 +1,1 @@
-declare module 'got-ssrf' {
-  export { Got as gotSsrf } from 'got'
-}
+declare module 'got-ssrf';
