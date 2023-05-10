@@ -1,6 +1,13 @@
-import { expect, describe, it } from '@jest/globals'
+import { expect, describe, it, jest } from '@jest/globals'
 import nock from 'nock'
-import { gotSsrf } from './index.js'
+
+// We can directly mock the "import { lookup } from 'dns'" call in index.js with jest.
+const mockDnsModule = await import('./__mocks__/dns.js')
+jest.unstable_mockModule('dns', () => mockDnsModule)
+
+// However, it does mean that we need to do a dynamic import to make sure we load the mocked import.
+// See: https://jestjs.io/docs/ecmascript-modules#module-mocking-in-esm
+const { gotSsrf } = await import('./index.js')
 
 nock.disableNetConnect()
 

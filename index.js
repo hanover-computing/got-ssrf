@@ -1,4 +1,4 @@
-import { lookup as nativeCallbackLookup } from './dns.js' // HACK WARNING
+import { lookup as nativeCallbackLookup } from 'dns'
 import { promisify } from 'util'
 import got from 'got'
 import ip from 'ipaddr.js'
