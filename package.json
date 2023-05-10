@@ -5,7 +5,7 @@
   "type": "module",
   "exports": "./index.js",
   "repository": "JaneJeon/got-csrf",
-  "author": "Jane Jeon <me@janejeon.com>",
+  "author": "Jane Jeon <git@janejeon.com>",
   "license": "LGPL-3.0",
   "engines": {
     "node": ">=14"
