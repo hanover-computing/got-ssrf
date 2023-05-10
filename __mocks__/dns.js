@@ -21,4 +21,8 @@ export function lookup(hostname, options, callback) {
   ) {
     callback(undefined, { address: '1.1.1.1', family: 4 })
   }
+
+  // Really make sure that all test cases - at least, the ones that resolve an actual hostname -
+  // have a corresponding DNS mock as well (on top of the HTTP mock).
+  callback(new Error('Could not resolve host'))
 }
