@@ -24,7 +24,7 @@ jobs:
     <<: *params
     steps:
       - checkout
-      - node/install-packages
+      - run: npm install # no cache, no lockfile - because this is a library
       - run: npm run lint:prettier
       - run: npm run lint:eslint -- --format junit --output-file reports/eslint/results.xml
   test:
@@ -33,7 +33,7 @@ jobs:
     <<: *params
     steps:
       - checkout
-      - node/install-packages
+      - run: npm install
       - run: npm test -- --ci --coverage # reports automatically generated
 
 workflows:
