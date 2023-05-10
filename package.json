@@ -23,7 +23,7 @@
     "ipaddr.js": "^2.0.1"
   },
   "devDependencies": {
-    "@janejeon/eslint-config": "^2.2.0",
+    "@janejeon/eslint-config": "3.0.0-3",
     "@janejeon/prettier-config": "^1.1.0",
     "enhanced-resolve": "^5.8.3",
     "husky": "^8.0.1",
