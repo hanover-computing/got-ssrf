@@ -1,3 +1,3 @@
 declare module 'got-ssrf' {
-  export { Got as gotSsrf } from 'got'
+  export { default as gotSsrf } from 'got'
 }
