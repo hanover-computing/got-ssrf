@@ -4,7 +4,7 @@
   "description": "Protect Got requests from SSRF",
   "type": "module",
   "exports": "./index.js",
-  "repository": "hanover-computing/got-csrf",
+  "repository": "hanover-computing/got-ssrf",
   "author": "Jane Jeon <git@janejeon.com>",
   "license": "LGPL-3.0",
   "engines": {
