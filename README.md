@@ -49,7 +49,7 @@ npm test
 
 ## Author
 
-👤 **Jane Jeon <me@janejeon.dev>**
+👤 **Jane Jeon <git@janejeon.com>**
 
 - Website: janejeon.dev
 - Github: [@JaneJeon](https://github.com/JaneJeon)
