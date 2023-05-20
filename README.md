@@ -64,7 +64,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2022 [Jane Jeon <me@janejeon.dev>](https://github.com/JaneJeon).<br />
+Copyright © 2023 [Jane Jeon <git@janejeon.com>](https://github.com/JaneJeon).<br />
 This project is [LGPL-3.0](https://github.com/JaneJeon/got-csrf/blob/master/LICENSE) licensed.
 
 TL;DR: you are free to import and use this library "as-is" in your code, without needing to make your code source-available or to license it under the same license as this library; however, if you do change this library and you distribute it (directly or as part of your code consuming this library), please do contribute back any improvements for this library and this library alone.
