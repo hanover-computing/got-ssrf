@@ -7,8 +7,6 @@ import debugGen from 'debug'
 const debug = debugGen('got-ssrf')
 const nativeLookup = promisify(nativeCallbackLookup) // importing straight from dns/promises limits node.js version to 15 or higher
 
-const ALLOWED_PROTOCOLS = ['http:', 'https:']
-
 // Assume all URLs are properly formed by the time it hits the hooks
 const protect = async options => {
   let lookup
@@ -26,8 +24,8 @@ const protect = async options => {
   // To prevent Server Side Request Forgery, we need to check the protocol.
   // Otherwise, you could end up making requests to internal services (e.g. the database)
   // that are within the same network but is not intended to be reached by the user.
-  if (!ALLOWED_PROTOCOLS.includes(options.url.protocol))
-    throw new Error('Invalid protocol!')
+  // This is done automatically by got, so we don't need to do anything here:
+  // https://github.com/sindresorhus/got/blob/8f77e8d07d8684cde95d351feafaa308b466dff4/source/core/options.ts#L1411
 
   // Check if the hostname is an IP address - we don't need to "lookup" IP addresses!
   let IP

@@ -23,7 +23,7 @@ npm i got-ssrf
 
 ## Usage
 
-Note that this package is ESM-only; see https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c for what to do if you're using CJS (i.e. `require()`).
+> Note that this package is ESM-only; see https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c for what to do if you're using CJS (i.e. `require()`).
 
 ```js
 import { gotSsrf } from 'got-ssrf'
@@ -40,6 +40,14 @@ import { gotInstance } from 'some-other-got-plugin'
 
 const merged = got.extend(gotSsrf, gotInstance)
 ```
+
+### Security
+
+This library is tested against a whole host of weird edge cases (a URL is not as straightforward as it seems). To see what behaviours are expected, please see the test suite.
+
+As this library doesn't parse the URLs itself (but rather relies on got, which relies on the node `URL` module), a good rule of thumb is that whatever you'd expect from the node `URL` module, you can expect of this library as well.
+
+If you want to disallow "weird" URLs (and trust me, there are _many_), as people may try to 'smuggle' hostnames in them (and cause SSRF that may not be caught by the `URL` module), you'll need to do an input validation of the URL (and reject the "weird" ones) _before_ passing it into got/got-ssrf.
 
 ## Run tests
 
