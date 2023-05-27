@@ -24,7 +24,17 @@ jobs:
     <<: *params
     steps:
       - checkout
-      - run: npm install # no cache, no lockfile - because this is a library
+      - &restore-cache
+        restore_cache:
+          keys:
+            - &cache-key node-deps-{{ arch }}-{{ checksum "package.json" }}
+      - &install
+        run: npm install # no npm ci, because no package-lock.json, because this is a lbirary
+      - &save-cache
+        save_cache:
+          key: *cache-key
+          paths:
+            - node_modules # yes, really
       - run: npm run lint:prettier
       - run: npm run lint:eslint -- --format junit --output-file reports/eslint/results.xml
   test:
@@ -33,7 +43,9 @@ jobs:
     <<: *params
     steps:
       - checkout
-      - run: npm install
+      - *restore-cache
+      - *install
+      - *save-cache
       - run: npm test -- --ci --coverage # reports automatically generated
 
 workflows:
