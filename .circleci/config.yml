@@ -40,7 +40,7 @@ workflows:
   build:
     jobs:
       - lint:
-          node-version: 18
+          node-version: 18.16
           post-steps:
             - &retrieve-junit
               store_test_results:
@@ -52,8 +52,8 @@ workflows:
           matrix:
             parameters:
               node-version:
-                - 18
-                - 16
+                - 18.16
+                - 16.20
           post-steps:
             - *retrieve-junit
             - codecov/upload # don't need token for public repos
