@@ -24,18 +24,7 @@ jobs:
     <<: *params
     steps:
       - checkout
-      - &restore-cache
-        restore_cache:
-          keys:
-            # Caching node_modules means we can't share it across node versions
-            - &cache-key node-deps-{{ arch }}-<< parameters.node-version >>-{{ checksum "package.json" }}
-      - &install
-        run: npm install # no npm ci, because no package-lock.json, because this is a lbirary
-      - &save-cache
-        save_cache:
-          key: *cache-key
-          paths:
-            - node_modules # yes, really
+      - node/install-packages
       - run: npm run lint:prettier
       - run: npm run lint:eslint -- --format junit --output-file reports/eslint/results.xml
   test:
@@ -44,16 +33,14 @@ jobs:
     <<: *params
     steps:
       - checkout
-      - *restore-cache
-      - *install
-      - *save-cache
+      - node/install-packages
       - run: npm test -- --ci --coverage # reports automatically generated
 
 workflows:
   build:
     jobs:
       - lint:
-          node-version: lts
+          node-version: 18
           post-steps:
             - &retrieve-junit
               store_test_results:
@@ -65,8 +52,8 @@ workflows:
           matrix:
             parameters:
               node-version:
-                - lts
-                - current
+                - 18
+                - 16
           post-steps:
             - *retrieve-junit
             - codecov/upload # don't need token for public repos
