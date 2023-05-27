@@ -27,7 +27,8 @@ jobs:
       - &restore-cache
         restore_cache:
           keys:
-            - &cache-key node-deps-{{ arch }}-{{ checksum "package.json" }}
+            # Caching node_modules means we can't share it across node versions
+            - &cache-key node-deps-{{ arch }}-<< parameters.node-version >>-{{ checksum "package.json" }}
       - &install
         run: npm install # no npm ci, because no package-lock.json, because this is a lbirary
       - &save-cache
