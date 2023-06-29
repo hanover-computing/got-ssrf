@@ -23,7 +23,7 @@
     "ipaddr.js": "^2.0.1"
   },
   "devDependencies": {
-    "@janejeon/eslint-config": "3.0.0-3",
+    "@janejeon/eslint-config": "3.0.0-4",
     "@janejeon/prettier-config": "^1.1.0",
     "cacheable-lookup": "^7.0.0",
     "husky": "^8.0.1",
