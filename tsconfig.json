@@ -1,0 +1,6 @@
+{
+  "extends": "@janejeon/tsconfig",
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+  }
+}

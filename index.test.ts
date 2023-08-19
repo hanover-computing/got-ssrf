@@ -1,11 +1,10 @@
-import { expect, describe, it, jest } from '@jest/globals'
 import { promisify } from 'util'
 import nock from 'nock'
 import CacheableLookup from 'cacheable-lookup'
 
-// We can directly mock the "import { lookup } from 'dns'" call in index.js with jest.
-const mockDnsModule = await import('./__mocks__/dns.js')
-jest.unstable_mockModule('dns', () => mockDnsModule)
+// We can directly mock the "import { lookup } from 'dns'" call in index.js with vitest.
+import * as mockDns from './__mocks__/dns.js'
+vi.mock('dns', () => mockDns)
 
 // However, it does mean that we need to do a dynamic import to make sure we load the mocked import.
 // See: https://jestjs.io/docs/ecmascript-modules#module-mocking-in-esm
@@ -22,9 +21,9 @@ const dnsCache = new CacheableLookup()
 // Also, for some reason trying to pass a mocked resolver with a resolve4() and a resolve6()
 // that always throws ENOTFOUND doesn't work (i.e. it doesn't use the `lookup` we pass to the options).
 // So we just directly mock lookupAsync.
-jest
-  .spyOn(dnsCache, 'lookupAsync')
-  .mockImplementation(promisify(mockDnsModule.lookup))
+vi.spyOn(dnsCache, 'lookupAsync').mockImplementation(
+  promisify(mockDns.lookup) as CacheableLookup['lookupAsync']
+)
 
 const setups = [
   {
@@ -36,7 +35,7 @@ const setups = [
   {
     title: 'dnsLookup',
     options: {
-      dnsLookup: mockDnsModule.lookup
+      dnsLookup: mockDns.lookup as unknown as CacheableLookup['lookup']
     }
   },
   {

@@ -1,21 +1,27 @@
 import { lookup as nativeCallbackLookup } from 'dns'
 import { promisify } from 'util'
-import got from 'got'
+import got, { Options } from 'got'
 import ip from 'ipaddr.js'
 import debugGen from 'debug'
+
+import type CacheableLookup from 'cacheable-lookup'
 
 const debug = debugGen('got-ssrf')
 const nativeLookup = promisify(nativeCallbackLookup) // importing straight from dns/promises limits node.js version to 15 or higher
 
+type LookupFn = (hostname: string) => Promise<{ address: string }>
+
 // Assume all URLs are properly formed by the time it hits the hooks
-const protect = async options => {
-  let lookup
+const protect = async (options: Options) => {
+  let lookup: LookupFn
   if (options.dnsCache) {
     debug('Using user-provided dnsCache.lookupAsync')
-    lookup = options.dnsCache.lookupAsync
+    lookup = (options.dnsCache as CacheableLookup).lookupAsync
   } else if (options.dnsLookup) {
     debug('Promisifying user-provided dnsLookup')
-    lookup = promisify(options.dnsLookup)
+    lookup = promisify(
+      options.dnsLookup
+    ) as unknown as CacheableLookup['lookupAsync'] // yay wildly incorrect types
   } else {
     debug('Falling back to native dns/promises lookup')
     lookup = nativeLookup
@@ -28,8 +34,10 @@ const protect = async options => {
   // https://github.com/sindresorhus/got/blob/8f77e8d07d8684cde95d351feafaa308b466dff4/source/core/options.ts#L1411
 
   // Check if the hostname is an IP address - we don't need to "lookup" IP addresses!
-  let IP
-  const { hostname } = options.url
+  let IP: string
+
+  // Even the got author himself casts this incorrect type: https://github.com/sindresorhus/got/blob/b1d61c173a681755ac23afb2f155f08801c1e7e4/source/core/index.ts#L1121
+  const { hostname } = options.url as URL
 
   if (ip.IPv4.isIPv4(hostname)) {
     IP = hostname

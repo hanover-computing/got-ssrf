@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx skip-ci && echo "Skipping test..." || npm test
+npx skip-ci && echo "Skipping test..." || CI=1 npm test
