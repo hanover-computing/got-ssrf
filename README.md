@@ -1,6 +1,5 @@
 <h1 align="center">Welcome to got-ssrf 👋</h1>
 
-[![CircleCI](https://circleci.com/gh/hanover-computing/got-ssrf/tree/master.svg?style=shield)](https://circleci.com/gh/hanover-computing/got-ssrf/tree/master)
 [![GitHub Actions](https://github.com/hanover-computing/got-ssrf/actions/workflows/ci.yml/badge.svg)](https://github.com/hanover-computing/got-ssrf/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/hanover-computing/got-ssrf/branch/master/graph/badge.svg)](https://codecov.io/gh/hanover-computing/got-ssrf)
 [![Version](https://img.shields.io/npm/v/got-ssrf)](https://www.npmjs.com/package/got-ssrf)
@@ -14,7 +13,7 @@
 
 SSRF is the evil sibling to CSRF that essentially allows RCE against your backends: https://portswigger.net/web-security/ssrf.
 
-This module automatically rejects all suchs requests so you can safely use got without even thinking about it.
+This module automatically rejects all such requests so you can safely use got without even thinking about it.
 
 ## Install
 
