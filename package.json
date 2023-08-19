@@ -1,6 +1,6 @@
 {
   "name": "got-ssrf",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Protect Got requests from SSRF",
   "type": "module",
   "repository": "hanover-computing/got-ssrf",
