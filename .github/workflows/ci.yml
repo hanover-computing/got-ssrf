@@ -33,5 +33,11 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm ci
-      - run: npm run test:cov
+      - name: Run test
+        if: matrix.node != 18
+        run: npm test
+      - name: Run test with coverage
+        if: matrix.node == 18
+        run: npm run test:cov
       - uses: codecov/codecov-action@v3
+        if: matrix.node == 18
