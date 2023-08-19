@@ -33,4 +33,5 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm ci
-      - run: npm test
+      - run: npm run test:cov
+      - uses: codecov/codecov-action@v3
