@@ -31,13 +31,11 @@
     "ipaddr.js": "^2.0.1"
   },
   "devDependencies": {
-    "@janejeon/eslint-config": "3.0.0-6",
+    "@janejeon/eslint-config-typescript": "^0.1.0",
     "@janejeon/prettier-config": "^2.0.0",
     "@janejeon/tsconfig": "^0.3.1",
     "@types/debug": "^4.1.8",
     "@types/node": "^20.5.1",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
     "@vitest/coverage-istanbul": "^0.34.2",
     "@vitest/ui": "^0.34.2",
     "cacheable-lookup": "^7.0.0",
