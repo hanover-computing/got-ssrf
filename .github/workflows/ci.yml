@@ -39,5 +39,5 @@ jobs:
       - name: Run test with coverage
         if: matrix.node == 18
         run: npm run test:cov
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4
         if: matrix.node == 18
