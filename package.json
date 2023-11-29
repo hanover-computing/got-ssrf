@@ -48,7 +48,7 @@
     "vitest": "^0.34.2"
   },
   "peerDependencies": {
-    "got": "^12 || ^13"
+    "got": "^14.0.0"
   },
   "keywords": [
     "http",
