@@ -24,20 +24,12 @@ jobs:
   test:
     needs: lint
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [16, 18]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 20
       - run: npm ci
-      - name: Run test
-        if: matrix.node != 18
-        run: npm test
       - name: Run test with coverage
-        if: matrix.node == 18
         run: npm run test:cov
-      - uses: codecov/codecov-action@v4
-        if: matrix.node == 18
+      - uses: codecov/codecov-action@v3
