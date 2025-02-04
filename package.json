@@ -36,8 +36,8 @@
     "@janejeon/tsconfig": "^0.3.1",
     "@types/debug": "^4.1.8",
     "@types/node": "^20.5.1",
-    "@vitest/coverage-istanbul": "^1.0.0",
-    "@vitest/ui": "^1.0.0",
+    "@vitest/coverage-istanbul": "^3.0.0",
+    "@vitest/ui": "^3.0.0",
     "cacheable-lookup": "^7.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^15.0.0",
@@ -45,7 +45,7 @@
     "npm-run-all2": "^6.0.0",
     "skip-ci": "^1.0.4",
     "typescript": "^5.1.6",
-    "vitest": "^1.0.0"
+    "vitest": "^3.0.0"
   },
   "peerDependencies": {
     "got": "^14"
