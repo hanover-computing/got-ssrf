@@ -35,7 +35,7 @@
     "@janejeon/prettier-config": "^2.0.0",
     "@janejeon/tsconfig": "^0.3.1",
     "@types/debug": "^4.1.8",
-    "@types/node": "^20.5.1",
+    "@types/node": "^22.0.0",
     "@vitest/coverage-istanbul": "^1.0.0",
     "@vitest/ui": "^1.0.0",
     "cacheable-lookup": "^7.0.0",
