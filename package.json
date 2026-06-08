@@ -45,7 +45,7 @@
     "npm-run-all2": "^6.0.0",
     "skip-ci": "^1.0.4",
     "typescript": "^5.1.6",
-    "vitest": "^1.0.0"
+    "vitest": "^3.0.0"
   },
   "peerDependencies": {
     "got": "^14"
