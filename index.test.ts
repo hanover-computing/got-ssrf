@@ -77,6 +77,35 @@ describe('got-ssrf', () => {
       )
     })
 
+    it('pins the connection to the address it checked', async () => {
+      // The checked address is 1.1.1.1 (see __mocks__/dns.ts). The connection must use that
+      // address, and must not resolve the hostname again, so a later DNS answer cannot change it.
+      const connectionLookups: unknown[] = []
+      const probe = got.extend({
+        hooks: {
+          beforeRequest: [
+            options => {
+              connectionLookups.push(options.dnsLookup)
+            }
+          ]
+        }
+      })
+      nock('http://public-url.com').get('/').reply(200)
+      await probe('http://public-url.com/')
+
+      const pinned = connectionLookups[0] as (
+        hostname: string,
+        options: object,
+        callback: (err: null, result: unknown) => void
+      ) => void
+      const addresses = await new Promise(resolve =>
+        pinned('public-url.com', { all: true }, (_err, result) =>
+          resolve(result)
+        )
+      )
+      expect(addresses).toEqual([{ address: '1.1.1.1', family: 4 }])
+    })
+
     it('checks every redirect', async () => {
       // Basically, we prevent "smuggling" internal endpoints from a public hostname
       // by checking the URL before every redirect.
