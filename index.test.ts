@@ -84,7 +84,7 @@ describe('got-ssrf', () => {
       const probe = got.extend({
         hooks: {
           beforeRequest: [
-            (options) => {
+            options => {
               connectionLookups.push(options.dnsLookup)
             }
           ]
@@ -98,7 +98,7 @@ describe('got-ssrf', () => {
         options: object,
         callback: (err: null, result: unknown) => void
       ) => void
-      const addresses = await new Promise((resolve) =>
+      const addresses = await new Promise(resolve =>
         pinned('public-url.com', { all: true }, (_err, result) =>
           resolve(result)
         )

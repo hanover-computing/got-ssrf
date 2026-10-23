@@ -99,7 +99,9 @@ const pinnedLookup = (address: string) => {
     maybeCallback?: unknown
   ) => {
     const callback = (
-      typeof optionsOrCallback === 'function' ? optionsOrCallback : maybeCallback
+      typeof optionsOrCallback === 'function'
+        ? optionsOrCallback
+        : maybeCallback
     ) as (err: null, address: unknown, family?: number) => void
     const wantsAll =
       typeof optionsOrCallback === 'object' &&
